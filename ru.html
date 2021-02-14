@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta name="theme-color" content="#ffece0"/>
+    <meta name="Description" content="Лучшая кондитерская в России, в которой продаются торты, чизкейки и другие пирожные, за которыми вы точно будете возвращаться снова и снова.">
+    <title>Кондитерская №1</title>
+    <style>
+        .hero {
+        height: 100vh;
+        width: 100%;
+        background-color: #151515;
+        background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/styles/images/hero.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: auto, cover;
+        background-attachment: fixed;
+      }
+      </style>
+</head>
+<body>
+    <nav>
+      <div class="nav-container">
+        <div class=nav-title-container>
+          <a onclick="scrollSmoothTo('hero'); hamburgerClose()" class="nav-title">Кондитерская №1</a>
+        </div>
+        <div class="nav-list" id="nav-list">
+          <a onclick="scrollSmoothTo('menu'); hamburgerClose()" class="nav-link">Меню</a>
+          <a onclick="scrollSmoothTo('about'); hamburgerClose()" class="nav-link">О нас</a>
+          <a onclick="scrollSmoothTo('reviews'); hamburgerClose()"class="nav-link">Отзывы</a>
+          <a onclick="scrollSmoothTo('footer'); hamburgerClose()" class="nav-link">Контакты</a>
+        </div>
+        <div class="nav-cart">
+          <a href="/cart-ru" class="nav-cart-text">
+            <i class="fas fa-shopping-cart nav-cart-icon"></i>        
+            <div class="nav-circle hidden">
+              <p class="nav-quantity">0</p>
+            </div>   
+          </a>
+          </div>
+        </div>
+        <div class="navbar__ham" onclick="hamburgerOpen()" id="nav-icon3">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div> 
+    </nav>
+    <section class="hero" id="hero">
+      <div class="wrapper">
+        <div class="hero-info">
+          <h1 class="hero-header">Кондитерская №1</h1>
+          <p class="hero-small-text">Лучший магазин тортов и пирожных с 1979 года</p>
+          <a class="menu-button" onclick="scrollSmoothTo('menu')">Открыть меню</a>
+        </div>
+      </div>
+        
+    </section>
+    <section class="menu" id="menu">
+      <div class="wrapper">
+        <h2 class="section-header">Меню</h2>
+        <div class="sort-section">
+          <div class="sort-types-selection">
+            <div class="sort-types-firsttwo">
+              <a class="sort-type" onclick="sortByType(this)" id="cake">Торты</a>
+              <a class="sort-type" onclick="sortByType(this)" id="cheesecake">Чизкейки</a>
+            </div>
+            <a class="sort-type" onclick="sortByType(this)" id="other">Пирожные</a>
+          </div>
+          <div class="sort-by-container">
+            <a id="popularity" onclick="sortByPopularity()" class="sort-by selected">по популярности</a>
+            <a id="price" onclick="sortByPrice()" class="sort-by">по цене <i class="fas fa-sort-amount-down-alt price-icon"></i></a>
+          </div>
+        </div>
+        <div class="menu-grid" data-aos="fade-up">
+          <div data-price="949" data-rating="100" data-type="cake">
+              <div class="menu-item">
+                <img src="/styles/images/menu-items/berries-cake.jpg" class="menu-item-image" alt="Торт Ягодный">
+                <div class="item-text-container">
+                    <div class="item-name-container">
+                      <div class="item-description-name"><p class="item-name">Торт Ягодный</p></div>
+                      <div class="item-description"><span>вес:</span><p class="price">1000</p><span>г</span></div>
+                    </div>
+                    <div class="item-priceandbuy">
+                      <div class="item-price"><p class="price">949</p><span>₽</span></div>
+                      <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                    </div>
+                </div>
+              </div>
+          </div>
+          <div data-price="960" data-rating="99" data-type="cake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/chocolate-cake1.jpg" class="menu-item-image" alt="Шоколадный Торт">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Торт Шоколадный</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">1100</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">960</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-price="299" data-rating="98" data-type="other">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/tartaletka-malina.jpg" class="menu-item-image" alt="Тарталетка с малиной">
+              <div class="item-text-container">
+                  <div class="item-name-container">
+                    <div class="item-description-name"><p class="item-name">Тарталетка с малиной</p><span class="item-name">(1 шт.)</span></div>
+                    <div class="item-description"><span>вес:</span><p class="price">170</p><span>г</span></div>
+                  </div>
+                  <div class="item-priceandbuy">
+                    <div class="item-price"><p class="price">299</p><span>₽</span></div>
+                    <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div data-price="1130" data-rating="97" data-type="cake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/medovik.jpg" class="menu-item-image" alt="Торт Медовик">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Торт Медовик</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">1000</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">1130</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-price="1099" data-rating="96" data-type="cake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/red-velvet.jpg" class="menu-item-image" alt="Торт Красный Бархат">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Торт Красный Бархат</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">1000</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">1099</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-price="500" data-rating="95" data-type="other">
+            <div class="menu-item">
+                <img src="/styles/images/menu-items/strudel.jpg" class="menu-item-image" alt="Яблочный Штрудель">
+                <div class="item-text-container">
+                  <div class="item-name-container">
+                    <div class="item-description-name"><p class="item-name">Яблочный Штрудель</p><span class="item-name">(1 шт.)</span></div>
+                    <div class="item-description"><span>вес:</span><p class="price">400</p><span>г</span></div>
+                  </div>
+                  <div class="item-priceandbuy">
+                    <div class="item-price"><p class="price">500</p><span>₽</span></div>
+                    <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div data-price="1090" data-rating="94" data-type="cake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/napoleon.jpg" class="menu-item-image" alt="Торт Наполеон">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Торт Наполеон</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">1000</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">1090</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-price="1300" data-rating="93" data-type="cake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/prague.jpg" class="menu-item-image" alt="Торт Прага">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Торт Прага</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">1000</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">1300</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div data-price="1399" data-rating="92" data-type="cheesecake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/chocolate-cheesecake.jpg" class="menu-item-image" alt="Шоколадный Чизкейк">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Шоколадный Чизкейк</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">950</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">1399</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div data-price="160" data-rating="91" data-type="other">
+          <div class="menu-item">
+            <img src="/styles/images/menu-items/strawberry-ekler.jpg" class="menu-item-image" alt="Эклер Ягодный">
+            <div class="item-text-container">
+              <div class="item-name-container">
+                <div class="item-description-name"><p class="item-name">Эклер Ягодный</p><span class="item-name">(1 шт.)</span></div>
+                <div class="item-description"><span>вес:</span><p class="price">140</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">160</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div data-price="999" data-rating="90" data-type="cheesecake">
+          <div class="menu-item">
+            <img src="/styles/images/menu-items/newyork.jpg" class="menu-item-image" alt="Чизкейк Нью-Йорк">
+            <div class="item-text-container">
+              <div class="item-name-container">
+                <div class="item-description-name"><p class="item-name">Чизкейк Нью-Йорк</p></div>
+                <div class="item-description"><span>вес:</span><p class="price">800</p><span>г</span></div>
+              </div>
+              <div class="item-priceandbuy">
+                <div class="item-price"><p class="price">999</p><span>₽</span></div>
+                <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-price="1499" data-rating="80" data-type="cake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/oreocake.jpg" class="menu-item-image" alt="Торт Орео">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Торт Орео</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">1000</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">1499</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div data-price="599" data-rating="71" data-type="other">
+        <div class="menu-item">
+            <img src="/styles/images/menu-items/chocolate-muffin.jpg" class="menu-item-image" alt="Маффины Шоколадные">
+            <div class="item-text-container">
+              <div class="item-name-container">
+                <div class="item-description-name"><p class="item-name">Маффины Шоколадные</p><span class="item-name">(6 шт.)</span></div>
+                <div class="item-description"><span>вес:</span><p class="price">800</p><span>г</span></div>
+              </div>
+              <div class="item-priceandbuy">
+                <div class="item-price"><p class="price">599</p><span>₽</span></div>
+                <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-price="890" data-rating="70" data-type="cake">
+          <div class="menu-item">
+            <img src="/styles/images/menu-items/birthday-cake.jpg" class="menu-item-image" alt="Торт Праздничный">
+            <div class="item-text-container">
+              <div class="item-name-container">
+                <div class="item-description-name"><p class="item-name">Торт Праздничный</p></div>
+                <div class="item-description"><span>вес:</span><p class="price">950</p><span>г</span></div>
+              </div>
+              <div class="item-priceandbuy">
+                <div class="item-price"><p class="price">890</p><span>₽</span></div>
+                <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-price="249" data-rating="61">
+          <div class="menu-item">
+            <img src="/styles/images/menu-items/tiramisu.jpg" class="menu-item-image" data-type="cheesecake" alt="Чизкейк Тирамису">
+            <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Чизкейк Тирамису</p><span class="item-name">(1 шт.)</span></div>
+                  <div class="item-description"><span>вес:</span><p class="price">100</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">249</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div data-price="899" data-rating="60" data-type="cake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/pumpkin-cake.jpg" class="menu-item-image" alt="Торт Тыквенный">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Торт Тыквенный</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">970</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">899</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div data-price="1199" data-rating="51" data-type="cheesecake">
+          <div class="menu-item">
+            <img src="/styles/images/menu-items/avocado-cheesecake.jpg" class="menu-item-image" alt="Чизкейк Авокадо">
+            <div class="item-text-container">
+              <div class="item-name-container">
+                <div class="item-description-name"><p class="item-name">Чизкейк Авокадо</p></div>
+                <div class="item-description"><span>вес:</span><p class="price">800</p><span>г</span></div>
+              </div>
+              <div class="item-priceandbuy">
+                <div class="item-price"><p class="price">1199</p><span>₽</span></div>
+                <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-price="949" data-rating="50" data-type="cake">
+            <div class="menu-item"">
+              <img src="/styles/images/menu-items/rainbow-cake.jpg" class="menu-item-image" alt="Торт Радужный">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Торт Радужный</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">990</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">949</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div data-price="300" data-rating="30" data-type="other">
+          <div class="menu-item">
+            <img src="/styles/images/menu-items/sweet-rolls.jpg" class="menu-item-image" alt="Сладкий Рулет">
+            <div class="item-text-container">
+              <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Сладкий рулет</p><span class="item-name">(1 шт.)</span></div>
+                  <div class="item-description"><span>вес:</span><p class="price">250</p><span>г</span></div>
+              </div>  
+              <div class="item-priceandbuy">
+                <div class="item-price"><p class="price">300</p><span>₽</span></div>
+                <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-price="1200" data-rating="40" data-type="cake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/carrotcake.jpg" class="menu-item-image" alt="Торт Морковный">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Торт Морковный</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">1000</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">1200</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div data-price="199" data-rating="30" data-type="cheesecake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/strawberry-cheesecake.jpg" class="menu-item-image" alt="Чизкейк Клубничный">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                    <div class="item-description-name"><p class="item-name">Чизкейк Клубничный</p><span class="item-name">(1 шт.)</span></div>
+                    <div class="item-description"><span>вес:</span><p class="price">100</p><span>г</span></div>
+                </div>  
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">199</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div data-price="1200" data-rating="20" data-type="cheesecake">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/berry-cheesecake.jpg" class="menu-item-image" alt="Чизкейк Брусничный">
+              <div class="item-text-container">
+                  <div class="item-name-container">
+                    <div class="item-description-name"><p class="item-name">Чизкейк Брусничный</p></div>
+                    <div class="item-description"><span>вес:</span><p class="price">900</p><span>г</span></div>
+                  </div>
+                  <div class="item-priceandbuy">
+                    <div class="item-price"><p class="price">1200</p><span>₽</span></div>
+                    <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <div data-price="1900" data-rating="11" data-type="cake">
+          <div class="menu-item">
+            <img src="/styles/images/menu-items/caramel-cake.jpg" class="menu-item-image" alt="Карамельный Торт">
+            <div class="item-text-container">
+              <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Карамельный Торт</p></div>
+                  <div class="item-description"><span>вес:</span><p class="price">1300</p><span>г</span></div>
+              </div>  
+              <div class="item-priceandbuy">
+                <div class="item-price"><p class="price">1900</p><span>₽</span></div>
+                <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-price="499" data-rating="10" data-type="other">
+            <div class="menu-item">
+              <img src="/styles/images/menu-items/macarons.jpg" class="menu-item-image" alt="Макаруны">
+              <div class="item-text-container">
+                <div class="item-name-container">
+                  <div class="item-description-name"><p class="item-name">Макаруны</p><span class="item-name">(6 шт.)</span></div>
+                  <div class="item-description"><span>вес:</span><p class="price">500</p><span>г</span></div>
+                </div>
+                <div class="item-priceandbuy">
+                  <div class="item-price"><p class="price">499</p><span>₽</span></div>
+                  <button class="add-to-cart-button" onclick="addToCart(this)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+      </div>
+    </section>
+    <section class="about" id="about">
+      <div class="wrapper">
+        <div class="about-contents">
+          <div class="left-text-box" data-aos="fade-right">
+            <h1 class="about-big-text">Уважение традиций</h1>
+            <p class="about-small-text">Кондитерская №1 специализируется в создании кондитерских изделий таких как торты, пироженые и прочие дессерты лучшего качества. Мы стараемся не сильно изменять рецепты наших блюд, чтобы предоставить их вам в таком виде, в каком они были оригинально задуманы. </p>
+          </div>
+          <div class="middle-logo-div">
+            <img src="/styles/images/chef-logo.jpg" class="middle-logo" data-aos="fade" alt="company-logo">
+          </div>
+          <div class="right-text-box" data-aos="fade-left">
+            <h1 class="about-big-text">Одного раза мало</h1>
+            <p class="about-small-text">Благодаря индредиентам наивысшего качества и труду наших высококвалифицированных кондитеров, наши кондитерские изделия получаются настолько вкусными, что вам обязательно захочется вернуться и попробовать еще один кусочек.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="reviews" id="reviews">
+      <div class="wrapper">
+        <h1 class="section-header">Отзывы покупателей</h1>
+        <div class="reviews-container" data-aos="fade-up">
+          <div class="review">
+            <h2 class="review-name">Игорь</h2>
+            <p class="review-date">3.06.2020</p>
+            <p class="review-text">Такие великолепные кондитерские - редкость в наше время.</p>
+          </div>
+          <div class="review">
+            <h2 class="review-name">Мария</h2>
+            <p class="review-date">23.05.2020</p>
+            <p class="review-text">Прекрасная кондитерская. Заказывали два торта. Очень вкусные были и доставили быстро.</p>
+          </div>
+          <div class="review">
+            <h2 class="review-name">Виктор</h2>
+            <p class="review-date">19.05.2020</p>
+            <p class="review-text">Готовят вкусно. Видно мастера опытные. Обязательно буду заказывать ещё несколько раз!</p>
+          </div>
+          <div class="review">
+            <h2 class="review-name">Александр</h2>
+            <p class="review-date">07.05.2020</p>
+            <p class="review-text">Рекомендую в этой кондитерской чизкейки. Невероятно вкусные. Эклер тоже нравится.</p>
+          </div>
+          <div class="review">
+            <h2 class="review-name">Саша</h2>
+            <p class="review-date">14.04.2020</p>
+            <p class="review-text">Хорошее качество изделий и быстрая доставка</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sale">
+      <div class="wrapper">
+        <div class="sale-container">
+          <h1 class="sale-big-text">Получите скидку на 500 ₽</h1>
+          <p class="sale-small-text">Введите свой email адрес чтобы получить промокод на 500 ₽</p>
+          <form class="email-and-submit" name="sale-form" id="sale-form" action="https://formspree.io/f/mdopjryq" method="POST">
+              <input class="email-input" type="email" name="email-sale" id="email-sale" placeholder="Адрес электронной почты" autocomplete="email" required>
+              <label for="email-sale" class="delivery-lable"></label>
+              <button type="submit" class="email-submit-button" name='submit'>Получить скидку</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer id="footer">
+      <div class="wrapper" style="padding-top: 30px; padding-bottom: 30px;">
+        <div class="footer-content">
+          <div class="footer-company">
+              <img src="/styles//images/chef-logo.jpg" class="footer-logo" alt="company-logo">
+              <a onclick="scrollSmoothTo('hero')" class="hero-link-footer">Кондитерская №1</a>
+          </div>
+          <div class="footer-nav-and-contacts">
+            <div class="footer-nav">
+                <h1 class="footer-nav-menu-text">Карта сайта</h1>
+                <div class="footer-line"></div>
+                <div class="footer-nav-list">
+                  <a onclick="scrollSmoothTo('menu')" class="footer-nav-link">Меню</a>
+                  <a onclick="scrollSmoothTo('about')" class="footer-nav-link">О нас</a>
+                  <a onclick="scrollSmoothTo('reviews')" class="footer-nav-link">Отзывы</a>
+                  <a onclick="scrollSmoothTo('footer')" class="footer-nav-link">Контакты</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <h1 class="footer-nav-menu-text">Меню</h1>
+                <div class="footer-line"></div>
+                <div class="footer-nav-list">
+                  <a onclick="scrollSmoothTo('menu') ; sortByTypeNav(this)" data-sorttype="cake" class="footer-nav-link">Торты</a>
+                  <a onclick="scrollSmoothTo('menu') ; sortByTypeNav(this)" data-sorttype="cheesecake" class="footer-nav-link">Чизкейки</a>
+                  <a onclick="scrollSmoothTo('menu') ; sortByTypeNav(this)" data-sorttype="other" class="footer-nav-link">Пирожные</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <h1 class="footer-nav-menu-text">Контакты</h1>
+                <div class="footer-line"></div>
+                <div class="footer-nav-list">
+                  <a href="https://vk.com/egor_kabantsov" rel="noreferrer nofollow" target="_blank"  class="footer-nav-link">ВК</a>
+                  <a href="https://www.instagram.com/egokabs" rel="noreferrer nofollow" target="_blank"  class="footer-nav-link">Instagram</a>
+                  <a href="mailto: karroge10@gmail.com" rel="noreferrer nofollow" target="_blank"  class="footer-nav-link">Почта</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+              <h1 class="footer-nav-menu-text">Язык</h1>
+              <div class="footer-line"></div>
+              <div class="footer-nav-list">
+                <a href="/ru" rel="noreferrer nofollow" target="_self"  class="footer-nav-link">Русский</a>
+                <a href="/index" rel="noreferrer nofollow" target="_self"  class="footer-nav-link">Английский</a>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-made-by">
+        <div class="made-by">
+          <span>© 2021</span>
+          <a href="https://vk.com/egor_kabantsov" rel="noreferrer nofollow" target="_blank" class="made-by-link"><span>Created by </span>Егор Кабанцов</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 50,
+        duration: 1000
+      });
+    </script>
+    <script src="https://kit.fontawesome.com/d7d89b012a.js" crossorigin="anonymous"></script>  
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <!-- slider initialization -->
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

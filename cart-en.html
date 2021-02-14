@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/shopping-cart.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d7d89b012a.js" crossorigin="anonymous"></script>
+    <title>Корзина</title>
+</head>
+<body onload="calculateItemsOnLoad()">
+    <nav>
+      <div class="nav-title-container"><a href="/index" class="nav-title">Confectionery №1</a></div>
+      <div class="shopping-map">
+        <a onclick="openCartPage() " class="nav-location active-nav" id="cart-page">Cart</a>
+        <i class="far fa-arrow-alt-circle-right fa-lg"></i>
+        <a  onclick="openOrderConfirmationPage()" class="nav-location" id="order-confirmation-page">Customer information</a>
+        <i class="far fa-arrow-alt-circle-right fa-lg"></i>
+        <a class="nav-location-final" id="order-confirmed-page">Order created</a>
+      </div>
+    </nav>
+    <section class="cart" id="cart">
+      <div class="wrapper">
+        <div class="shopping-cart-container">
+            <div class="cart-items">
+                <div class="cart-item base hidden">
+                    <div class="name-and-pic">
+                        <div class="cart-item-pic-container">
+                            <img src="/styles/images/menu-items/berries-cake.jpg" class="cart-item-pic">
+                        </div>
+                        <div class="cart-item-info">
+                            <h1 class="cart-item-name">Berry Cake</h1>
+                            <div class="item-description"><p class="cart-item-weight">1000</p><span>g</span></div>
+                            <a class="remove-item" onclick="deleteItemFromCart(this)"><i class="fas fa-trash-alt"></i>Remove</a>
+                        </div>
+                    </div>
+                    <div class="quantity-and-price">
+                        <div class="quantity-container">
+                            <div class="circle" onclick="changeItemAmount('reduce', this)"><i class="fas fa-minus"></i></div>
+                            <p class="quantity">1</p>
+                            <div class="circle" onclick="changeItemAmount('increase', this)"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="price-container">
+                            <div class="item-price hidden"><p class="price">1200</p><span>₽</span></div>
+                            <div class="item-price-modified"><p class="price">1200</p><span>₽</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="buyer-container hidden" id="buyerform" action="https://formspree.io/f/xjvpzqjq" target="_self" method="POST">
+                <div class="delivery-container">
+                    <i class="fas fa-map-marker-alt buyer-icon"></i>
+                    <div class="adress-form">
+                      <h1 class="delivery-header">Delivery Address</h1>
+                      <label for="city" class="delivery-lable">City</label><br>
+                      <input type="text" id="city" name="Город" class="delivery-input" required autocomplete="address-level1"><br>
+                      <label for="street" class="delivery-lable">Street</label><br>
+                      <input type="text" id="street" name="Улица" class="delivery-input" required autocomplete="address-level2"><br>
+                      <label for="building" class="delivery-lable">Building</label><br>
+                      <input type="text" id="building" name="Дом" class="delivery-input" required  autocomplete="address-level3"><br>
+                      <label for="apartment" class="delivery-lable">Appartment</label><br>
+                      <input type="text" id="apartment" name="Квартира" class="delivery-input" required autocomplete="address-level4"><br>
+                    </div>
+                </div>
+                <div class="payment-and-name-container">
+                  <div class="client-info-container">
+                    <i class="fas fa-info buyer-icon"></i>
+                    <div class="adress-form">
+                      <h1 class="delivery-header">Customer Information</h1>
+                      <label for="name" class="delivery-lable">Name</label><br>
+                      <input type="text" id="name" name="Имя" class="delivery-input" required  autocomplete="name"><br>
+                      <label for="phonenumber" class="delivery-lable">Phone Number</label><br>
+                      <input type="tel" id="phonenumber" name="Номер телефона" class="delivery-input" required  autocomplete="tel"><br>
+                    </div>
+                  </div>
+                  <div class="pay-method-container">
+                    <i class="fas fa-wallet buyer-icon"></i>
+                    <div class="payment-method-form">
+                    <h1 class="delivery-header">Paymenth Method</h1>
+                    <label for="cash" class="container">Cash
+                      <input type="radio" checked="checked" name="Оплата" value="Наличными" id="cash">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label for="card-on-arrival" class="container">Card on arrival
+                      <input type="radio" name="Оплата" value="Картой при получении" id="card-on-arrival">
+                      <span class="checkmark"></span>
+                    </label>
+                    </div>
+                  </div>
+                </div>
+            </form>
+            <div class="cart-confirmation">
+                <div class="confirmation-text-area">
+                    <h1 style="margin-bottom: 15px;">Order Summary</h1>
+                    <div class="total-text-area">
+                        <div class="item-price"><p class="total-count" id="total-items-quantity">0</p><span>items</span></div>
+                        <div class="total-numbers"><p class="total-price" id="total-before-promo">0</p><span>₽</span></div>
+                    </div>
+                    <div class="total-text-area">
+                        <p class="total-text">Promocode discount</p>
+                        <div class="total-numbers"><p class="total-price" id="promocode">0</p><span>₽</span></div>
+                    </div>
+                    <h1 style="margin-bottom: 15px; margin-top: 10px;">Promocode</h1>
+                    <div class="promo-area">
+                        <input class="promo-input" type="text" name="promocode" placeholder="Promocode" onkeyup="this.value = this.value.toUpperCase();" autocomplete="off">
+                        <button type="submit" class="promo-button" onclick="usePromocode()" style="padding: 10px 15px">Activate</button>
+                    </div>
+                    <p class="wrong-promo hidden">Wrong promocode</p>
+                    <p class="low-price hidden">Minimum order price: 500 ₽</p>
+                    <p class="promo-low-price hidden">Minimum oder price for promocode: 1000 ₽</p>
+                    <p class="promo-activated hidden">Promocode Activated!</p>
+                    <div class="final-total-area">
+                        <div class="final-price-line">
+                            <p class="total">Total Price:</p>
+                            <div class="total-numbers"><p class="total-price" id="total-after-promo">0</p><span>₽</span></div>
+                        </div>
+                        <a class="order-button" onclick="createOrder()" type="submit">Create order</a>
+                        <a class="clear-cart-button" onclick="resetCart()">Clear cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer">
+      <div class="wrapper" style="padding-top: 30px; padding-bottom: 30px;">
+        <div class="footer-content">
+          <div class="footer-company">
+              <img src="/styles//images/chef-logo.jpg" class="footer-logo">
+              <a href="./index.html" class="hero-link-footer">Confectionery №1</a>
+          </div>
+          <div class="footer-nav-and-contacts">
+            <div class="footer-nav">
+                <h1 class="footer-nav-menu-text">Navigation</h1>
+                <div class="footer-line"></div>
+                <div class="footer-nav-list">
+                  <a href="./index" onclick="cartNavLink2('menu')" class="footer-nav-link">Menu</a>
+                  <a href="./index" onclick="cartNavLink2('about')" class="footer-nav-link">About</a>
+                  <a href="./index" onclick="cartNavLink2('reviews')" class="footer-nav-link">Reviews</a>
+                  <a href="./index" onclick="cartNavLink2('footer')" class="footer-nav-link">Contacts</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <h1 class="footer-nav-menu-text">Menu</h1>
+                <div class="footer-line"></div>
+                <div class="footer-nav-list">
+                  <a href="./index" onclick="cartNavLink(this)" data-sorttype="cake" class="footer-nav-link">Cakes</a>
+                  <a href="./index" onclick="cartNavLink(this)" data-sorttype="cheesecake" class="footer-nav-link">Cheesecake</a>
+                  <a href="./index" onclick="cartNavLink(this)" data-sorttype="other" class="footer-nav-link">Other sweets</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <h1 class="footer-nav-menu-text">Contacts</h1>
+                <div class="footer-line"></div>
+                <div class="footer-nav-list">
+                  <a href="https://vk.com/egor_kabantsov" rel="noreferrer nofollow" target="_blank"  class="footer-nav-link">VK</a>
+                  <a href="https://www.instagram.com/egokabs" rel="noreferrer nofollow" target="_blank"  class="footer-nav-link">Instagram</a>
+                  <a href="mailto: karroge10@gmail.com" rel="noreferrer nofollow" target="_blank"  class="footer-nav-link">Email</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+              <h1 class="footer-nav-menu-text">Language</h1>
+              <div class="footer-line"></div>
+              <div class="footer-nav-list">
+                <a href="/cart-ru.html" rel="noreferrer nofollow" target="_self"  class="footer-nav-link">Russian</a>
+                <a href="/cart-en.html" rel="noreferrer nofollow" target="_self"  class="footer-nav-link">English</a>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-made-by">
+        <div class="made-by">
+          <span>© 2021</span>
+          <a href="https://vk.com/egor_kabantsov" rel="noreferrer nofollow" target="_blank" class="made-by-link"><span>Created by </span>Еgоr Kabantsov</a>
+        </div>
+      </div>
+    </footer>
+    <script src="js/cart-en.js"></script>
+</body>
+</html>

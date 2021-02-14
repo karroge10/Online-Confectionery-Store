@@ -1,0 +1,20 @@
+{   
+    "name" : "Кондитерская №1",
+    "theme_color": "#ffece0",
+    "background_color": "#ffece0",
+    "icons": [
+        {
+          "src": "/maskable_icon.png",
+          "type": "image/png",
+          "sizes": "512x512",
+          "purpose": "any maskable"
+        },
+        {
+          "src": "/icon-640.png",
+          "type": "image/png",
+          "sizes": "640x640"
+        }
+      ],
+    "start_url": "../index.html",
+    "display": "browser"
+}
