@@ -22,4 +22,5 @@ Have any recommendations or interested in contacting me? Send me a message!
 
 My email is karroge10@gmail.com.
 
+[My personal website](https://egorkabantsov.netlify.app/)
 
