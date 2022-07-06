@@ -338,7 +338,7 @@ a {
 	row-gap: 30px;
 	grid-column-gap: 40px;
 	grid-row-gap: 30px;
-	justify-items: center;
+	/* justify-items: center; */
 	align-items: center;
 }
 .menu-item {
